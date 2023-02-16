@@ -1,0 +1,29 @@
+.navigation{
+    margin: 0 auto;
+    width: 1440px;
+
+}
+
+.navigation__logo{
+    margin: 0 auto;
+    width: 600px;
+    height: 200px;
+}
+
+.navigation__logoIMG{
+    width: 100%;
+    height: auto;
+}
+
+.links{
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    column-gap: 30px;
+}
+
+.links__svg{
+    width: 60px;
+    height: 60px;
+}
