@@ -6,8 +6,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 export const getCartItems = createAsyncThunk('cards/getCartItems', ()=>{
     return fetch('../cards.json')
-    .then((res)=> res.json())
-    .catch((err) => console.log(err))
+    .then((res)=> JSON.parse(res))
+    .catch((err)=> console.log(err))
 })
 
 const cardsSlice = createSlice({
