@@ -1,13 +1,32 @@
-import React from 'react' 
+import {React, useEffect} from 'react' 
 import '../../../style/footer/merch/merch.css'
+import { getCartItems } from '../../../store/reducers/cards'
+import { useDispatch, useSelector} from 'react-redux'
 
 export default function Merch(){
-    
-     return(
-          <div className='merch'>
+     const { isLoading } = useSelector((state)=> state)
 
-          </div>
-     )
+     const dispatch = useDispatch()
+
+     useEffect(()=>{
+          dispatch(getCartItems())
+     },[])
+
+     if(isLoading){
+          return(
+               <div className='merch'>
+                   <h1 style={{color: '#fff'}}>LOADING...</h1> 
+               </div>
+          )
+     }
+     if(!isLoading){
+          return(
+               <div style={{color: '#fff'}}>
+                    PISYA
+               </div>
+          )
+     }
+     
 
 
 }

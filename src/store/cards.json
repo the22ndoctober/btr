@@ -1,0 +1,9 @@
+[
+    
+    {"name": "Bullying Hoodie", "src": "/public/content/cards/bullying__hoodie.png", "price": 10.99, "type": "hoodie", "sizes": ["M","L","XL"]},
+    {"name": "Bullying T-Shirt", "src": "/public/content/cards/bullying__hoodie.png", "price": 10.99, "type": "t-shirt", "sizes": ["M","L","XL"]},
+    {"name": "Bullying Longsleave", "src": "/public/content/cards/bullying__hoodie.png", "price": 10.99, "type": "longsleave", "sizes": ["M","L","XL"]},
+    {"name": "BlackOut Hoodie", "src": "/public/content/cards/bullying__hoodie.png", "price": 10.99, "type": "hoodie", "sizes": ["M","L","XL"]},
+    {"name": "BlackOut T-Shirt", "src": "/public/content/cards/bullying__hoodie.png", "price": 10.99, "type": "t-shirt", "sizes": ["M","L","XL"]}
+    
+]

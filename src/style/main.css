@@ -4,8 +4,8 @@ body{
 }
 
 .app {
-    width: 100%;
-    height: 2400px;
+    width: auto;
+    height: 100vw;
     background-image: url(../../public/content/bg.jpg);
     background-size: auto;
     margin: 0 auto;
