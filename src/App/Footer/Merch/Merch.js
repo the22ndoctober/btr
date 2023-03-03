@@ -1,31 +1,48 @@
 import {React, useEffect} from 'react' 
 import '../../../style/footer/merch/merch.css'
-import { getCartItems } from '../../../store/reducers/cards'
+import { selectState } from '../../../store/reducers/cards'
 import { useDispatch, useSelector} from 'react-redux'
+import Card from './Card/Card'
 
 export default function Merch(){
-     const { isLoading } = useSelector((state)=> state)
+     const cards = useSelector(selectState)
 
      const dispatch = useDispatch()
 
-     useEffect(()=>{
-          dispatch(getCartItems())
-     },[])
+     return(
+          <>
+          <h1 className='merch_h1'>Our Merch</h1>
+          <div className="merchWrapper">
+               <button className='merchCard__button merchCard__backBtn'>
+                    {'<'}
+               </button>
 
-     if(isLoading){
-          return(
-               <div className='merch'>
-                   <h1 style={{color: '#fff'}}>LOADING...</h1> 
+               <div className="merchSlider">
+
+                    <div className="merchCardHolder">
+
+                         {cards.map(card=>
+                              <Card
+                                   name={card.name}
+                                   src={card.src}
+                                   price={card.price}
+                                   type={card.type}
+                                   sizes={card.sizes}
+                              />     
+                         )}
+
+                    </div>
+
                </div>
-          )
-     }
-     if(!isLoading){
-          return(
-               <div style={{color: '#fff'}}>
-                    PISYA
-               </div>
-          )
-     }
+               
+               <button className='merchCard__button merchCard__forwardBtn'>
+                    {'>'}
+               </button>
+          </div>
+          </>
+     )
+
+     
      
 
 

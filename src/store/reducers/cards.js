@@ -1,34 +1,18 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
+import * as actions from '../actions/cards'
 
-
-
-
-
-export const getCartItems = createAsyncThunk('cards/getCartItems', ()=>{
-    return fetch('../cards.json')
-    .then((res)=> JSON.parse(res))
-    .catch((err)=> console.log(err))
-})
+const getCartItems = [
+  {name: "Bullying Hoodie", src: "/content/cards/bullying__hoodie.png", price: 10.99, type: "hoodie", sizes: ["M","L","XL"]},
+  {name: "Bullying T-Shirt", src: "/content/cards/bullying__tShirt.png", price: 10.99, type: "t-shirt", sizes: ["M","L","XL"]},
+  {name: "Bullying Longsleave", src: "/content/cards/bullying__long.png", price: 10.99, type: 'longsleave', sizes: ["M","L","XL"]},
+  {name: "Post-War Hoodie", src: "/content/cards/postWar__hoodie.png", price: 10.99, type: "hoodie", sizes: ["M","L","XL"]},
+  {name: "Post-War T-Shirt", src: "/content/cards/postWar__tShirt.png", price: 10.99, type: "t-shirt", sizes: ["M","L","XL"]},
+  {name: "Post-War Longsleave", src: "/content/cards/postWar__long.png", price: 10.99, type: "longsleave", sizes: ["M","L","XL"]}
+]
 
 const cardsSlice = createSlice({
   name: 'cards',
-  initialState: {
-    values:[],
-    isLoading: true
-  },
-  extraReducers: {
-    [getCartItems.pending]: (state) =>{
-        state.isLoading = true
-    },
-    [getCartItems.fulfilled]: (state, action)=>{
-        console.log(action)
-        state.isLoading = false
-        state.values = action.payload
-    },
-    [getCartItems.rejected]: (state) =>{
-        state.isLoading = false
-    }
-  },
+  initialState: getCartItems,
   reducers: {
     increment(state) {
       state.values++
@@ -37,5 +21,6 @@ const cardsSlice = createSlice({
   },
 })
 
+export const selectState = state=> state.cards
 export const { increment } = cardsSlice.actions
 export default cardsSlice.reducer

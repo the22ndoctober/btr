@@ -1,6 +1,50 @@
-.merch{
-    width: 1440px;
-    height: auto;
-    margin: 0 auto;
+.merch_h1{
+    text-align: center;
+    color: #fff;
+    font-size: 48px;
+}
+.merchWrapper{
+    width: 1440px;   
     display: flex;
+    justify-content: center;
+    margin: 50px auto 0;
+    column-gap: 10px;
+}
+
+.merchSlider{
+    width: 1340px;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+}
+
+.merchCardHolder{
+    width: auto;
+    display: flex;
+    column-gap: 30px;
+    position: absolute;
+}
+
+.merchCard__button{
+    outline: none;
+    border: none;
+    font-size: 48px;
+    background-color: transparent;
+    color: #fff;
+}
+
+.merchCard{
+    border-radius: 10px;
+    background-color: #fff;
+    width: 250px;
+    height: 300px;
+}
+
+
+.merchCard__img{
+    width: 150px;
+    height: 150px;
+    object-fit: scale-down;
+    margin: 0 auto;
 }
