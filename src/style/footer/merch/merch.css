@@ -4,7 +4,7 @@
     font-size: 48px;
 }
 .merchWrapper{
-    width: 1440px;   
+    width: 1240px;   
     display: flex;
     justify-content: center;
     margin: 50px auto 0;
@@ -12,7 +12,7 @@
 }
 
 .merchSlider{
-    width: 1340px;
+    width: 1090px;
     height: 300px;
     overflow: hidden;
     position: relative;
@@ -24,6 +24,7 @@
     display: flex;
     column-gap: 30px;
     position: absolute;
+    transition-duration: .7s;
 }
 
 .merchCard__button{
@@ -41,10 +42,16 @@
     height: 300px;
 }
 
+.merchCard__photo{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
 
 .merchCard__img{
-    width: 150px;
-    height: 150px;
+    width:  200px;
+    height: 200px;
+    padding: 20px;
     object-fit: scale-down;
-    margin: 0 auto;
+    
 }
