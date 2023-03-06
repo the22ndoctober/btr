@@ -13,7 +13,7 @@
 
 .merchSlider{
     width: 1090px;
-    height: 300px;
+    height: 390px;
     overflow: hidden;
     position: relative;
     margin: 0 auto;
@@ -27,7 +27,7 @@
     transition-duration: .7s;
 }
 
-.merchCard__button{
+.slider__button{
     outline: none;
     border: none;
     font-size: 48px;
@@ -39,19 +39,101 @@
     border-radius: 10px;
     background-color: #fff;
     width: 250px;
-    height: 300px;
+    height: auto;
+    overflow: hidden;
+    position: relative;
 }
-
+.merchCard__wrapper{
+    padding: 20px;
+}
 .merchCard__photo{
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
+    width: 100%;
+    
 }
 
 .merchCard__img{
     width:  200px;
     height: 200px;
-    padding: 20px;
     object-fit: scale-down;
     
+}
+.merchCard__info{
+    margin-top: 10px;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+.merchCard__name{
+    font-size: 1.4rem;
+}
+.merchCard__sizes{
+    display: flex;
+    column-gap: 5px;
+}
+.merchCard__buttons{
+    margin-top: 20px;
+    margin-bottom: -30px;
+    display: flex;
+    column-gap: 8px;
+}
+.merchCard__button{
+    outline: none;
+    border: none;
+    padding: 10px;
+    font-size: 1rem;
+    width: 80px;
+    transition-duration: .5s;
+    cursor: pointer;
+}
+.merchCard__buttonBuy{
+    background-color: #d34300;
+    color: #fff;    
+}
+.merchCard__buttonBuy:hover{
+    background-color: #ec0000;
+    
+}
+.merchCard__buttonRemove:hover{
+    background-color: #5c5c5c;
+    color: #ffffff;
+}
+
+.merchCard__soldOut{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    position: absolute;
+    color: #313131;
+    font-size: 72px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+
+
+
+.cart{
+    position: fixed;
+    width: 64px;
+    height: 64px;
+    bottom: 35px;
+    right: 35px;
+}
+
+.cart__amount{
+    color: #fff;
+    background-color: #b12a01;
+    width: 20px;
+    height: 20px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    padding: 3px;
+    border-radius: 100%;
+    z-index: 100;
+    position: absolute;
+    top: -10px;
+    right: -15px;
 }
