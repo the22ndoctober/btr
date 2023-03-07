@@ -26,4 +26,9 @@
 .links__svg{
     width: 60px;
     height: 60px;
+
+}
+.links__svg:hover{
+    color: #d34300;
+    fill: #d34300;
 }

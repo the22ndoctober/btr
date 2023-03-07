@@ -13,8 +13,8 @@
 
 .merchSlider{
     width: 1090px;
-    height: 390px;
-    overflow: hidden;
+    height: 400px;
+    overflow-x: hidden;
     position: relative;
     margin: 0 auto;
 }
@@ -39,12 +39,19 @@
     border-radius: 10px;
     background-color: #fff;
     width: 250px;
-    height: auto;
+    height: 390px;
     overflow: hidden;
     position: relative;
+    cursor: pointer;
+    
 }
 .merchCard__wrapper{
     padding: 20px;
+    transform-origin: center;
+    transition-duration: .5s;
+}
+.merchCard__wrapper:hover{
+    transform: scale(105%);
 }
 .merchCard__photo{
     width: 100%;
@@ -52,8 +59,8 @@
 }
 
 .merchCard__img{
-    width:  200px;
-    height: 200px;
+    width:  100%;
+    height: auto;
     object-fit: scale-down;
     
 }
@@ -65,7 +72,7 @@
     row-gap: 5px;
 }
 .merchCard__name{
-    font-size: 1.4rem;
+    font-size: 1.2rem;
 }
 .merchCard__sizes{
     display: flex;
@@ -76,6 +83,7 @@
     margin-bottom: -30px;
     display: flex;
     column-gap: 8px;
+    align-items: center;
 }
 .merchCard__button{
     outline: none;

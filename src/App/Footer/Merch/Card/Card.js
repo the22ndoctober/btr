@@ -1,6 +1,9 @@
 import React from 'react' 
+import { addToCart} from '../../../../store/reducers/cards'
+import { useDispatch } from 'react-redux'
 
 export default function Card({
+    id,
     name,
     src,
     price,
@@ -8,7 +11,10 @@ export default function Card({
     sizes,
     amount
 }){
-    
+    const dispatch = useDispatch()
+    const addToCartBtn = ()=>{
+        dispatch(addToCart(id))
+    }
      return(
         <div className='merchCard'>
             {amount === 0 && <div className='merchCard__soldOut'>SOLD OUT</div>}
@@ -31,12 +37,12 @@ export default function Card({
                     </div>
                 </div>
                 <div className="merchCard__buttons">
-                    <button className="merchCard__button merchCard__buttonBuy">
+                    <button className="merchCard__button merchCard__buttonBuy" onClick={addToCartBtn}>
                         Buy
                     </button>
-                    <button className="merchCard__button merchCard__buttonRemove">
-                        Remove
-                    </button>
+                    <div className="merchCard__left">
+                        Left in store: {amount}
+                    </div>
                 </div>
             </div>
         </div>

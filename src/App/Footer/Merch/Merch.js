@@ -1,12 +1,13 @@
 import {React, useEffect, useState} from 'react' 
 import '../../../style/footer/merch/merch.css'
-import { selectState, selectCart } from '../../../store/reducers/cards'
+import { selectState, selectCart, addToCart, removeFromCart } from '../../../store/reducers/cards'
 import { useDispatch, useSelector} from 'react-redux'
 import Card from './Card/Card'
 
 export default function Merch(){
      const cards = useSelector(selectState)
      const cart = useSelector(selectCart)
+     console.log(cards)
      const [transition, setTransition] = useState(0)
      const [sliderButtonBackActive, setSliderButtonBackActive] = useState(1)
      const [sliderButtonForwardActive, setSliderButtonForwardActive] = useState(1)
@@ -16,11 +17,10 @@ export default function Merch(){
      
 
      useEffect(()=>{
-          console.log(transition)
           setSliderButtonBackActive(1)
           setSliderButtonForwardActive(1)
-          if(transition === 0) setSliderButtonBackActive(0.4)
-          if(pages <= Math.abs(((transition/distanceToScroll)))+1) setSliderButtonForwardActive(0.4)
+          if(transition === 0) setSliderButtonBackActive(0)
+          if(pages <= Math.abs(((transition/distanceToScroll)))+1) setSliderButtonForwardActive(0)
      },[transition])
 
      const transitionForward = ()=>{
@@ -55,12 +55,14 @@ export default function Merch(){
 
                          {cards.map(card=>
                               <Card
+                                   id={card.id}
                                    name={card.name}
                                    src={card.src}
                                    price={card.price}
                                    type={card.type}
                                    sizes={card.sizes}
                                    amount={card.amount}
+                                   
                               />     
                          )}
 
