@@ -4,7 +4,10 @@ export default function CartItem({
     name,
     src,
     price,
-    sizes
+    sizes,
+    amount,
+    add,
+    remove
 }){
     
      return(
@@ -16,10 +19,21 @@ export default function CartItem({
                 <img src={src} alt="" className='cartItem__img'/>
             </div>
             <div className="cartItem__price">
-                {price}
+                {price}$
             </div>
             <div className="cartItem__sizes">
                 {sizes.map(size=> <div className='cartItem__size'>{size}</div>)}
+            </div>
+            <div className="cartItem__buttonWrapper">
+                <button className='cartItem__button cartItem__buttonAdd' onClick={add}> 
+                    +
+                </button>
+                <button className='cartItem__button cartItem__buttonRemove' onClick={remove}> 
+                    -
+                </button>
+            </div>
+            <div className="cartItem__amount">
+                {amount}
             </div>
         </div>
      )

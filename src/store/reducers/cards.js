@@ -35,8 +35,8 @@ const cardsSlice = createSlice({
     addToCart: (state, action)=> {
       state.values = actions.addToCart( state.values, state.values.items, state.values.cart, action.payload)
     },
-    removeFromCart: state =>{
-      
+    removeFromCart: (state,action) =>{
+      state.values = actions.removeFromCart(state.values, state.values.items, state.values.cart, action.payload)
     },
     
   },
