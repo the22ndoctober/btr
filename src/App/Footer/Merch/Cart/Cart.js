@@ -36,7 +36,6 @@ export default function Cart({
                         name={item.name}
                         src={item.src}
                         price={item.price}
-                        sizes={item.sizes}
                         amount={item.amount}
                         add={()=>{
                             add(item.id)

@@ -1,6 +1,8 @@
-import React from 'react' 
+import React, { useState } from 'react' 
 import { addToCart} from '../../../../store/reducers/cards'
 import { useDispatch } from 'react-redux'
+import Size from './Size/Size'
+
 
 export default function Card({
     id,
@@ -8,16 +10,20 @@ export default function Card({
     src,
     price,
     type,
-    sizes,
     amount
+    
 }){
+    const [activeSize, setActiveSize] = useState()
     const dispatch = useDispatch()
     const addToCartBtn = ()=>{
-        dispatch(addToCart(id))
+        activeSize ? dispatch(addToCart({id:id,activeSize: activeSize})) : alert('Choose size')
+        
     }
+    
+
      return(
         <div className='merchCard'>
-            {amount === 0 && <div className='merchCard__soldOut'>SOLD OUT</div>}
+            {amount.reduce((sum, next) => sum+=next.amount, 0) === 0 && <div className='merchCard__soldOut'>SOLD OUT</div>}
             <div className="merchCard__wrapper">
 
                 <div className="merchCard__photo">
@@ -28,12 +34,21 @@ export default function Card({
                         {name}
                     </div>
                     <div className="merchCard__price">
-                        {price}
+                        {price} $
                     </div>
                     <div className="merchCard__sizes">
-                        {sizes.map(size=> <div className='merchCard__sizesText'>
-                            {size}
-                        </div>)}
+                        {amount.map(item=> {
+                            if(item.amount > 0) 
+                            return <Size
+                                size={item.size}
+                                amount={item.amount}
+                                handleActive={setActiveSize}
+                                active={activeSize}
+                            />
+                            
+
+                        } 
+                        )}
                     </div>
                 </div>
                 <div className="merchCard__buttons">
@@ -41,7 +56,7 @@ export default function Card({
                         Buy
                     </button>
                     <div className="merchCard__left">
-                        Left in store: {amount}
+                        Left in store: {amount.reduce((sum, next) => sum+=next.amount, 0)}
                     </div>
                 </div>
             </div>
