@@ -1,28 +1,64 @@
 export const addToCart = (state, items, cart, key, size)=>{
-    const product = items.find(value=> value.id === key)
-    const currentSize = product.amount.find(value=> value.size === size)
-
-    
-    if(product.amount.reduce((sum, next) => sum+=next.amount, 0) <= 0) {
+    const pickedItem = items.find(item=> item.id === key)
+    console.log(pickedItem)
+    if(!pickedItem) {
+        alert('product doesn`t exist error')
+        return state
+    }
+    if(pickedItem.amount.reduce((sum,item)=> sum+=item) <= 0) {
         alert('no product left in store')
         return state
     }
-
-    if(currentSize.amount <= 0) {
-        alert('no product with this size left in store')
+    if(pickedItem.amount.find(item=> item.size === size).amount <=0) {
+        alert('no product with this size in store')
         return state
     }
-
-    if(cart.some(item=> item.id === key)){
-        return  { items: items.map(value=> value.id === key ? {...value, amount: product.amount.map(size=> size.size===size ? {...size, amount: size.amount+1}:size)} : value),
-        cart: cart.map(item=>
-            item.id === key ? {...item, amount: item.amount.map(size=> size.size===size ? {...size, amount: size.amount+1}:size)} : item
-            )
+    if(!cart.some(item=> item.id === key)){
+        return {
+            items: items.map(item=>{
+                if(item.id === key){
+                    return {...item, amount: item.amount.map(val=>{
+                        console.log(val)
+                        if(val.size === size){
+                            return {...val, amount: val.amount - 1}
+                        }
+                        return val
+                    })}
+                }
+                return item
+            }),
+            cart: [...cart,{...pickedItem, amount: [{size: size, amount: 1}]}]
         }
     }
-    return { items: items.map(value=> value.id === key ? {...value, amount: product.amount.map(val=> val.size===size ? {...val, amount: size.amount+1}:val)} : value),
-        cart: [...cart, {id:key, name: product.name, src: product.src, price: product.price, amount: [{size: size, amount: 1}]}]
+
+    return {
+        items: items.map(item=>{
+            if(item.id === key){
+                return {...item, amount: item.amount.map(val=>{
+                    if(val.size === size){
+                        return {...val, amount: val.amount - 1}
+                    }
+                    return val
+                })}
+            }
+            return item
+        }),
+        cart: cart.map(item=>{
+            if(item.id === key){
+                if(item.amount.some(val=> val.size === size)){
+                    return {...item, amount: item.amount.map(val=>{
+                        if(val.size === size){
+                            return {...val, amount: val.amount + 1}
+                        }
+                        return val
+                    })}
+                }
+                return {...item, amount: [...item.amount, {size: size, amount: 1}]}
+            }
+            return item
+        })
     }
+
 }
 
 export const removeFromCart = (state, items, cart, key, size)=>{

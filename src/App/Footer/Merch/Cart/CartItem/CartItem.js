@@ -8,8 +8,10 @@ export default function CartItem({
     add,
     remove
 }){
-    console.log(amount)
-     return(
+    return(
+    <>
+        {amount.map(size=>
+        
         <div className='cartItem'>
             <div className="cartItem__name">
                 {name}
@@ -21,7 +23,7 @@ export default function CartItem({
                 {price}$
             </div>
             <div className="cartItem__sizes">
-                {amount.map(size=> <div className='cartItem__size'>{size.size}</div>)}
+                <div className='cartItem__size'>{size.size}</div>
             </div>
             <div className="cartItem__buttonWrapper">
                 <button className='cartItem__button cartItem__buttonAdd' onClick={add}> 
@@ -32,10 +34,14 @@ export default function CartItem({
                 </button>
             </div>
             <div className="cartItem__amount">
-                {amount.map(size=> size.amount)}
+                {size.amount}
             </div>
         </div>
-     )
+
+)}
+    </>
+    )
+    }
+     
 
 
-}
